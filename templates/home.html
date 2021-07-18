@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{%block content%}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{{ url_for('livefeed') }}">Live Feed</a>
+        </div>
+    </div>
+</article>
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{{ url_for('staticfeed') }}">Video Feed</a>
+        </div>
+    </div>
+</article>
+{% endblock content %}
