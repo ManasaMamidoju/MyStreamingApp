@@ -30,9 +30,12 @@ def register():
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
+
+
 @app.route("/")
 def index():
     return render_template('index.html')
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
