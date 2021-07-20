@@ -1,4 +1,5 @@
 backports.entry-points-selectable==1.1.0
+certifi==2021.5.30
 click==8.0.1
 colorama==0.4.4
 distlib==0.3.2
@@ -14,8 +15,11 @@ Jinja2==3.0.1
 MarkupSafe==2.0.1
 numpy==1.21.0
 opencv-python==4.5.3.56
+opencv-python-headless==4.5.3.56
+pipenv==2021.5.29
 platformdirs==2.0.2
 six==1.16.0
 virtualenv==20.6.0
+virtualenv-clone==0.5.4
 Werkzeug==2.0.1
 WTForms==2.3.3
