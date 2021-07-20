@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {%block content%}
-    <h1>Static Video Feed</h1>
-    <a href="{{ url_for('home') }}" class="btn btn-outline-info">Back</a>
+<h1>Static Video Feed</h1>
+<a href="{{ url_for('home') }}" class="btn btn-outline-info">Back</a>
 
-    <div>
-        <img src="{{ url_for('staticvideo') }}" width="75%"/>
-
-    </div>
+<div>
+    <video src="static/staticvideo.mp4" controls width="75%" />
+    <br>
+</div>
 {% endblock content %}

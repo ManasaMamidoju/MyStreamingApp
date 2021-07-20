@@ -7,20 +7,6 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
 
-posts = [
-    {
-        'author': 'Corey Schafer',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'April 20, 2018'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'April 21, 2018'
-    }
-]
 
 ##Everything needed for authentication#######
 @app.route("/register", methods=['GET', 'POST'])
@@ -52,7 +38,7 @@ def login():
 def home():
     return render_template('home.html')
 
-##Everything needed or live stream##########
+##Everything needed for live stream##########
 
 camera= cv2.VideoCapture(0)#for live streaming from my camera
 
