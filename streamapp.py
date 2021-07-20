@@ -44,7 +44,7 @@ camera= cv2.VideoCapture(0)#for live streaming from my camera
 
 def generate_frames(camera):
     while True:
-        success, image = video.read()
+        success, image = camera.read()
         ret, jpeg = cv2.imencode('.jpg', image)
         frame = jpeg.tobytes()
         yield (b'--frame\r\n'
