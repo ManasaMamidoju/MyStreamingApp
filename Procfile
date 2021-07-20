@@ -1,1 +1,1 @@
-web: gunicorn streamapp:app
+web: gunicorn streamapp:app --preload
