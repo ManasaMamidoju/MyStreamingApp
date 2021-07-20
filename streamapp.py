@@ -42,21 +42,13 @@ def home():
 
 camera= cv2.VideoCapture(0)#for live streaming from my camera
 
-def generate_frames():
+def generate_frames(camera):
     while True:
-            
-        ## read the camera frame
-        success,frame=camera.read()
-        if not success:
-            break
-        else:
-            ret,buffer=cv2.imencode('.jpg',frame)
-            frame=buffer.tobytes()
-
-        yield(b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        #success is a boolean variable which tells us whether we're able to read the camera or not
-        
+        success, image = video.read()
+        ret, jpeg = cv2.imencode('.jpg', image)
+        frame = jpeg.tobytes()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
 @app.route("/livefeed")
 def livefeed():
@@ -64,11 +56,11 @@ def livefeed():
 
 @app.route('/camvideo')
 def camvideo():
-    return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
+    global camera
+    return Response(generate_frames(camera),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 ##Everything needed or Static Feed##########
-
-
 def gen():
     """Video streaming generator function."""
     cap = cv2.VideoCapture('staticvideo.mp4')
@@ -94,7 +86,6 @@ def staticvideo():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),
         mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
